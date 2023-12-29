@@ -1,0 +1,9 @@
+<launch>
+
+    <rosparam command="load" file="$(find apriltag_pose_updater)/tag_pose.yaml" />  
+
+    <node name="apriltag_pose_updater" pkg="apriltag_pose_updater" type="apriltag_pose_updater.py" output="screen">
+        <!-- Modify 'your_package_name' and 'your_node_script.py' to reflect your actual package name and script name -->
+    </node>
+
+</launch>
