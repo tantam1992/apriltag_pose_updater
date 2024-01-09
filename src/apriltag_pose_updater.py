@@ -97,12 +97,12 @@ def read_tag_poses(file_path):
 def posePublisher():
     rospy.init_node('apriltag_pose_updater', anonymous=True)
 
-    rospy.Subscriber("tag_detections", AprilTagDetectionArray, poseCallback)
+    rate = rospy.Rate(5)
 
-    rospy.loginfo("Getting transformation from base_link to map.")
-    
-    rospy.spin()
-    
+    while not rospy.is_shutdown():
+        rospy.Subscriber("tag_detections", AprilTagDetectionArray, poseCallback)
+        rospy.loginfo("Getting transformation from base_link to map.")
+        rate.sleep()    
 
 if __name__ == '__main__':
     try:
